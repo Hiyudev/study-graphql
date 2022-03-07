@@ -1,11 +1,14 @@
-import type { NextPage } from 'next'
+import type { NextPage } from "next";
+import { usePageQuery } from "../generated/graphql";
 
 const Home: NextPage = () => {
-  return (
-    <h1>
-        Hello World
-    </h1>
-  )
-}
+  const [{ data }] = usePageQuery({
+    variables: {
+      slug: "about",
+    },
+  });
 
-export default Home
+  return <h1>{data?.page?.title}</h1>;
+};
+
+export default Home;
