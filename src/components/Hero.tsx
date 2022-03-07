@@ -1,9 +1,12 @@
 type HeroProps = {
-  title: string;
-  subtitle: string;
-}
+  title: string | undefined;
+  subtitle: string | null | undefined;
+};
 
-export function Hero({ title, subtitle }: HeroProps) {
+function Hero({
+  title = "Skeleton title",
+  subtitle = "Skeleton subtitle",
+}: HeroProps) {
   return (
     <div className="relative bg-gray-50 overflow-hidden">
       <div className="relative pt-6 pb-16 sm:pb-24">
@@ -37,5 +40,7 @@ export function Hero({ title, subtitle }: HeroProps) {
         </main>
       </div>
     </div>
-  )
+  );
 }
+
+export default Hero;

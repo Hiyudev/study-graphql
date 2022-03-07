@@ -15,7 +15,7 @@ type BlogPostProps = {
   };
 };
 
-export function BlogPost({ post }: BlogPostProps) {
+function BlogPost({ post }: BlogPostProps) {
   return (
     <div
       key={post.title}
@@ -63,3 +63,5 @@ export function BlogPost({ post }: BlogPostProps) {
     </div>
   );
 }
+
+export default BlogPost;
