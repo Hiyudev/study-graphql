@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 type BlogPostProps = {
@@ -22,9 +21,8 @@ function BlogPost({ post }: BlogPostProps) {
       className="flex flex-col rounded-lg shadow-lg overflow-hidden"
     >
       <div className="flex-shrink-0">
-        <Image
+        <img
           className="h-48 w-full object-cover"
-          layout="fill"
           src={post.imageUrl}
           alt=""
         />
@@ -43,9 +41,8 @@ function BlogPost({ post }: BlogPostProps) {
         <div className="mt-6 flex items-center">
           <div className="flex-shrink-0">
             <span className="sr-only">{post.author.name}</span>
-            <Image
+            <img
               className="h-10 w-10 rounded-full"
-              layout="fill"
               src={post.author.imageUrl}
               alt=""
             />
