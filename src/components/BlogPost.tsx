@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type BlogPostProps = {
@@ -21,11 +22,15 @@ function BlogPost({ post }: BlogPostProps) {
       className="flex flex-col rounded-lg shadow-lg overflow-hidden"
     >
       <div className="flex-shrink-0">
-        <img
-          className="h-48 w-full object-cover"
-          src={post.imageUrl}
-          alt=""
-        />
+        <div className="relative w-full h-48 object-cover">
+          <Image
+            layout="fill"
+            objectFit='contain'
+            className="object-cover"
+            src={post.imageUrl}
+            alt=""
+          />
+        </div>
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
@@ -41,11 +46,15 @@ function BlogPost({ post }: BlogPostProps) {
         <div className="mt-6 flex items-center">
           <div className="flex-shrink-0">
             <span className="sr-only">{post.author.name}</span>
-            <img
-              className="h-10 w-10 rounded-full"
-              src={post.author.imageUrl}
-              alt=""
-            />
+            <div className="relative h-10 w-10">
+              <Image
+                layout="fill"
+                objectFit="cover"
+                className="rounded-full"
+                src={post.author.imageUrl}
+                alt=""
+              />
+            </div>
           </div>
           <div className="ml-3">
             <p className="text-sm font-medium text-gray-900">

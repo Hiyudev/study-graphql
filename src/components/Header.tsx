@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
+import Image from "next/image";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -95,8 +96,9 @@ function Header() {
                 <div className="flex items-center justify-between w-full md:w-auto">
                   <a href="#">
                     <span className="sr-only">Workflow</span>
-                    <img
-                      className="h-8 w-auto sm:h-10"
+                    <Image
+                      width={32}
+                      height={32}
                       src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                       alt=""
                     />
@@ -147,8 +149,9 @@ function Header() {
               <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div className="px-5 pt-4 flex items-center justify-between">
                   <div>
-                    <img
-                      className="h-8 w-auto"
+                    <Image
+                      width={32}
+                      height={32}
                       src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                       alt=""
                     />

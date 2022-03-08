@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import Image from "next/image";
 import BlogPost from "../../components/BlogPost";
 import { PostDocument, usePostQuery } from "../../generated/graphql";
 import { client, ssrCache } from "../../libs/urql";
@@ -8,11 +9,7 @@ interface BlogPageProps {
 }
 
 function BlogPage({ slug }: BlogPageProps) {
-  const [
-    {
-      data: { post },
-    },
-  ] = usePostQuery({
+  const [{ data: post }] = usePostQuery({
     variables: {
       slug: slug,
     },
@@ -20,20 +17,28 @@ function BlogPage({ slug }: BlogPageProps) {
 
   return (
     <div className="relative pb-16 bg-white overflow-hidden">
-      <img className="w-full h-96 object-cover" src={post.coverImage.url} />
+      <div className="relative w-full h-96">
+        <Image
+          layout="fill"
+          objectFit="contain"
+          className="object-cover"
+          alt="Cover image"
+          src={post?.post?.coverImage?.url ?? ""}
+        />
+      </div>
 
       <div className="relative px-4 pt-16 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto">
           <h1>
             <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {post.title}
+              {post?.post?.title ?? ""}
             </span>
           </h1>
         </div>
 
         <div
           className="mt-6 prose prose-lg mx-auto"
-          dangerouslySetInnerHTML={{ __html: post.content.html }}
+          dangerouslySetInnerHTML={{ __html: post?.post?.content?.html ?? "" }}
         />
       </div>
     </div>
